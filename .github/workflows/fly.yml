@@ -37,9 +37,9 @@ jobs:
     if: success()
     steps:
       - name: Fly deploy
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy to server
-      - run: flyctl deploy --remote-only
+        run: flyctl deploy --remote-only
         env:
             PIPELINE_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
