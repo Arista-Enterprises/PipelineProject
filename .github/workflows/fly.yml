@@ -3,7 +3,7 @@ name: Pipeline_Deploy
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,8 +28,8 @@ jobs:
       - name: Install dependencies
         run: go install
       
-      - name: Run tests
-        run: go tests
+      - name: Run test
+        run: go test
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,4 +42,4 @@ jobs:
       - name: Deploy to server
         run: flyctl deploy --remote-only
         env:
-            PIPELINE_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+            FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
